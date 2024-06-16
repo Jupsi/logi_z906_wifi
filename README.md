@@ -1,4 +1,4 @@
-# Z906 WiFi Home Assistant Mod with Console Integration
+# Logitech Z906 WiFi Home Assistant Mod with Console Integration
 
 ![Z906 WiFi Mod](images/haos.png)
 
@@ -47,7 +47,7 @@ This project is perfect for everybody whos IR Receiver stopped working (like min
    - Open `sketch_jun7a.ino` in Arduino IDE.
 
 4. **Update WiFi and MQTT settings:**
-   - In `WifiSetup.h`, update your WiFi credentials.
+   - In `WifiSetup.cpp`, update your WiFi credentials.
    - In `sketch_jun7a.ino`, update your MQTT broker credentials in the setup method.
 
 5. **Flash the ESP32:**
@@ -64,6 +64,7 @@ This project is perfect for everybody whos IR Receiver stopped working (like min
 Below is the table showing the cable connections between the Console, Amplifier, and ESP32:
 
 ![Cable Connections](images/alle.jpg)
+![Diagram](images/kabel.png)
 
 | Console | Amplifier | ESP32  |
 |---------|-----------|--------|
@@ -86,6 +87,18 @@ Below is the table showing the cable connections between the Console, Amplifier,
 | 14      | 14        | X      |
 | 15      | 15        | 35     |
 | Gnd     | Gnd       | Gnd    |
+
+You can adjust all ESP32 Headers in the z906.h file.
+```
+//esp GPIO Header
+  const int ADC_PIN_LOW = 35;
+  const int ADC_PIN_CON_BOOT = 32;
+  const int ADC_PIN_CABLE_CONNECTED = 34;
+  const int8_t RX_CONSOLE_GPIO = 16;
+  const int8_t TX_CONSOLE_GPIO = 17;
+  const int8_t RX_AMP_GPIO = 22;
+  const int8_t TX_AMP_GPIO = 23;
+```
 
 ## Known Issues
 - When restarting the Console with the dedicated Button, there will arrive garbage Data on the Serial Lines. This confuses the Console and you have to unplug and replug it. I tried to fix that with integrated Pin 15 and Pin 8 but its not working properly.
