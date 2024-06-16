@@ -47,7 +47,7 @@ This project is perfect for everybody whos IR Receiver stopped working (like min
    - Open `sketch_jun7a.ino` in Arduino IDE.
 
 4. **Update WiFi and MQTT settings:**
-   - In `WifiSetup.h`, update your WiFi credentials.
+   - In `WifiSetup.cpp`, update your WiFi credentials.
    - In `sketch_jun7a.ino`, update your MQTT broker credentials in the setup method.
 
 5. **Flash the ESP32:**
