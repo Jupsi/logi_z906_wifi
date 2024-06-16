@@ -1,2 +1,104 @@
-# logi_z906_wifi
-Logitech Z906 WiFi MQTT for ESP32 with Console functionality
+# Z906 WiFi Home Assistant Mod with Console Integration
+
+![Z906 WiFi Mod](images/haos.png)
+
+This project provides a way to control your Logitech Z906 speaker system via WiFi using an ESP32 microcontroller. It includes MQTT integration for seamless control through Home Assistant.
+
+I am aware that there are already multiple projects for this Sound System, but none of them integrated the original Z906 Console.
+With this Project you can still use your Console for the System.
+
+This project is perfect for everybody whos IR Receiver stopped working (like mine).
+
+## Features
+
+- Control volume, input, effects, and individual levels of the Z906 system
+- Power on/off the Z906 system
+- Home Assistant integration using MQTT and auto-discovery
+- Still use the Z906 Console instead of replacing it
+- Visual Feedback for all MQTT-Commands on the Console
+
+## Hardware Requirements
+
+- ESP32 microcontroller
+- Logitech Z906 speaker system
+- WiFi network
+- DB15 Female Breakout Board
+- DB15 Male Breakout Board
+
+## Software Requirements
+
+- Arduino IDE
+- ESP32 board support for Arduino IDE
+- Home Assistant
+- Mosquitto MQTT broker
+
+## Installation
+
+1. **Clone this repository:**
+   ```sh
+   git clone https://github.com/Jupsi/logi_z906_wifi.git
+   cd logi_z906_wifi/sketch_jun7a
+   ```
+2. **Install the necessary libraries in the Arduino IDE:**
+   - PubSubClient
+   - ArduinoJson
+
+3. **Open the project in Arduino IDE:**
+   - Open `sketch_jun7a.ino` in Arduino IDE.
+
+4. **Update WiFi and MQTT settings:**
+   - In `WifiSetup.h`, update your WiFi credentials.
+   - In `sketch_jun7a.ino`, update your MQTT broker credentials in the setup method.
+
+5. **Flash the ESP32:**
+   - Connect your ESP32 to the computer.
+   - Select the correct board and port in the Arduino IDE.
+   - Click "Upload" to flash the ESP32.
+
+6. **Configure Home Assistant:**
+   - Ensure Mosquitto broker is installed and running in Home Assistant.
+   - The auto-discovery feature should automatically add the Z906 entities to Home Assistant.
+
+## Cable Connections
+
+Below is the table showing the cable connections between the Console, Amplifier, and ESP32:
+
+![Cable Connections](images/alle.jpg)
+
+| Console | Amplifier | ESP32  |
+|---------|-----------|--------|
+| 1       | 1         | X      |
+| 2       | 2         | X      |
+| 3       | 3         | X      |
+| 4       | 4         | X      |
+| 5       | 5         | X      |
+| 6       | 6         | Gnd    |
+| X       | 6+Gnd     | X      |
+| 7       | 7         | X      |
+| 8       | 8         | 32     |
+| 9       | 9         | 34     |
+| 10      | 10        | X      |
+| 11      | 11        | X      |
+| 12      | X         | 17     |
+| 13      | X         | 16     |
+| X       | 12        | 22     |
+| X       | 13        | 23     |
+| 14      | 14        | X      |
+| 15      | 15        | 35     |
+| Gnd     | Gnd       | Gnd    |
+
+## Known Issues
+- When restarting the Console with the dedicated Button, there will arrive garbage Data on the Serial Lines. This confuses the Console and you have to unplug and replug it. I tried to fix that with integrated Pin 15 and Pin 8 but its not working properly.
+- Mute is mostly tracked by Console so i could not integrate it into Home Assistant and provide full functionality.
+
+## License
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0). You are free to use, modify, and distribute the code, provided it is not for commercial purposes.
+
+## Contribution
+Contributions are welcome! Please open an issue or submit a pull request if you have any improvements or bug fixes.
+
+## Support
+For any questions or support, please open an issue in this repository.
+
+## Special Thanks
+- https://github.com/nomis for reverse Engineering this System
