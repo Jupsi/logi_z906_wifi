@@ -40,9 +40,9 @@ void setup() {
 
   mqttClient = new MQTT();
   // Use this for IP
-  mqttClient->Setup(IPAddress(192, 168, 0, 111), 1883, "mqtt", "1234");
+  mqttClient->Setup(IPAddress(192, 168, 0, 111), 1883, "your-mqtt-user", "your-mqtt-password");
   // Use this for domain
-  // mqttClient.Setup("192.168.0.111", 1883, "mqtt", "1234");
+  // mqttClient.Setup("your-mqqt-domain", 1883, "your-mqtt-user", "your-mqtt-password");
   mqttClient->Connect();
 
   Serial.println("Setup finished");
