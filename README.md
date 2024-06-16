@@ -1,4 +1,4 @@
-# Z906 WiFi Home Assistant Mod with Console Integration
+# Logitech Z906 WiFi Home Assistant Mod with Console Integration
 
 ![Z906 WiFi Mod](images/haos.png)
 
