@@ -104,6 +104,25 @@ You can adjust all ESP32 Headers in the z906.h file.
 - When restarting the Console with the dedicated Button, there will arrive garbage Data on the Serial Lines. This confuses the Console and you have to unplug and replug it. I tried to fix that with integrated Pin 15 and Pin 8 but its not working properly.
 - Mute is mostly tracked by Console so i could not integrate it into Home Assistant and provide full functionality.
 
+## Troubleshooting
+- Console is switching Inputs and/or Effect on its own
+    1. Switch the Console off with the dedicated Power button.
+    2. Wait atleast 5 seconds to assure the Console shut donw completly.
+    3. Press Input for 8 Seconds and wait for 4 Input lights to light up.
+    4. Config is reset to default.
+
+
+- Console won't start
+    1. Unplug the Console from ESP32.
+    2. Restart ESP32.
+    3. Wait ~ 10 seconds for ESP32 to startet completly.
+    4. Replug the Console.
+
+- Console auto shuts off
+    1. Turn on the Console.
+    2. Press Level for 5 Seconds until the Level lights shut off.
+
+
 ## License
 This project is licensed under the GNU General Public License v3.0 (GPL-3.0). You are free to use, modify, and distribute the code, provided it is not for commercial purposes.
 
