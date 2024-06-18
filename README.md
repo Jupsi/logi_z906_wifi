@@ -107,10 +107,10 @@ You can adjust all ESP32 Headers in the z906.h file.
 ## Troubleshooting
 - Console is switching Inputs and/or Effect on its own
     1. Switch the Console off with the dedicated Power button.
-    2. Wait atleast 5 seconds to assure the Console shut donw completly.
+    2. Wait atleast 5 seconds to assure the Console shut down completly.
     3. Press Input for 8 Seconds and wait for 4 Input lights to light up.
     4. Config is reset to default.
-
+    5. Sometimes this needs to be done without the ESP32 in place.
 
 - Console won't start
     1. Unplug the Console from ESP32.
@@ -121,6 +121,11 @@ You can adjust all ESP32 Headers in the z906.h file.
 - Console auto shuts off
     1. Turn on the Console.
     2. Press Level for 5 Seconds until the Level lights shut off.
+ 
+When Auto Shutdown is turned off and your dont power off the Console, when engaged a connection none of these Problems appear.
+
+All of the Problems are due to the Fact i could not figure out how to correctly use Pin 8 and Pin 15 since there is no real Documentation about them. 
+Maybe someone will figure it out.
 
 
 ## License
