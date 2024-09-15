@@ -100,7 +100,7 @@ void Z906::_OnMQTTMessage_SetVolume_Rear(MQTT* mqttClient, const char* message) 
     while (volume > _volume_rear) {
       volume--;
       serialAmp->write(static_cast<uint8_t>(SERIAL_HEADER::RESET_IDLE_TIME));
-      serialAmp->write(static_cast<uint8_t>(SERIAL_HEADER::VOLUME_REAR_DOWN));
+      serialAmp->write(static_cast<uint8_t>(SERIAL_HEADER::VOLUME_REAR_UP));
       serialAmp->write(static_cast<uint8_t>(SERIAL_HEADER::RESET_IDLE_TIME));
     }
   } else {
