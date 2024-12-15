@@ -122,6 +122,12 @@ You can adjust all ESP32 Headers in the z906.h file.
     1. Turn on the Console.
     2. Press Level for 5 Seconds until the Level lights shut off.
  
+- Console shows 3 LEDs (no Serial Signal)
+     1. Plug off Console
+     2. Restart ESP
+     3. Wait for ESP to fully Boot
+     4. Plug in Console
+ 
 None of the above problems appear when auto shutdown is turned off and the console is powered off while connecting everything together.
 
 All of the problems are due to the Fact I could not figure out how to correctly use Pin 8 and Pin 15 since there is no real documentation about them. 
