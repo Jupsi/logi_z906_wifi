@@ -12,7 +12,7 @@ This project is perfect for everybody who's IR Receiver stopped working (like mi
 ## Features
 
 - Control volume, input, effects, and individual levels of the Z906 system
-- Power on/off the Z906 system
+- Visual Power on/off the Z906 system (Sensor)
 - Home Assistant integration using MQTT and auto-discovery
 - Keep the Z906 Console functional instead of replacing it
 - Visual Feedback for all MQTT-Commands on the Console
