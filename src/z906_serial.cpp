@@ -288,15 +288,13 @@ void Z906::_On_Serial_Multibyte_Message(MQTT* mqttClient) {
         data.push_back(_mute);
 
 
-
+        int ch_lut[] = {4, 5, 2, 6, 1, 3}; //AMP sends channel effects order in 4 5 2 6 1 3
         for (int i = 0; i < 6; i++) {
           uint8_t input_effect = _Serial_Amplifier_ReadByte_With_Wait();
           read_length++;
 
           //check for current input and set our effect according
-          if (i + 1 == static_cast<int>(_input)) {
-            //todo this is not correct order..
-            //AMP Sends 4 5 2 6 1 3
+          if (ch_lut[i] == static_cast<int>(_input)) {
             switch (input_effect) {
               case 0:
                 _effect = EFFECT_TYPE::EFFECT_3D;
