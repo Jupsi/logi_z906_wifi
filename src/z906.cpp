@@ -19,8 +19,8 @@ Z906::Z906()
 
   pinMode(TX_CONSOLE_GPIO, OUTPUT);
   digitalWrite(TX_CONSOLE_GPIO, HIGH);
-  pinMode(RX_CONSOLE_GPIO, OUTPUT);
-  digitalWrite(RX_CONSOLE_GPIO, HIGH);
+  pinMode(TX_AMP_GPIO, OUTPUT);
+  digitalWrite(TX_AMP_GPIO, HIGH);
 
   serialConsole = new HardwareSerial(1);
   serialAmp = new HardwareSerial(2);
