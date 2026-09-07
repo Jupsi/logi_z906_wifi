@@ -16,6 +16,12 @@ Z906::Z906()
     _mqtt_power_timeout(millis() + Z906::MQTT_POWER_TIMEOUT),
     _timer(0),
     _has_value_changed(false) {
+
+  pinMode(TX_CONSOLE_GPIO, OUTPUT);
+  digitalWrite(TX_CONSOLE_GPIO, HIGH);
+  pinMode(RX_CONSOLE_GPIO, INPUT);
+  digitalWrite(RX_CONSOLE_GPIO, HIGH);
+
   serialConsole = new HardwareSerial(1);
   serialAmp = new HardwareSerial(2);
 
