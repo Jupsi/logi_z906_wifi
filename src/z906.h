@@ -13,6 +13,8 @@ private:
   long _timer;
   //timeout when multibyte request by console
   const long SERIAL_TIMEOUT = 500;
+  //Max wait for a continuation byte of a multibyte reply.
+  const unsigned long SERIAL_READ_TIMEOUT = 500;
 
   //timeouts to response to mqtt broker
   const long MQTT_TIMEOUT = 2500;

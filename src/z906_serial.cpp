@@ -52,7 +52,12 @@ void Z906::_Serial_Process_Console() {
 
 void Z906::_Serial_Process_Amplifier(MQTT* mqttClient) {
   if (serialAmp->available() && _Is_Serial_Timeout_Over()) {
+    int counter = 0;
     while (serialAmp->available()) {
+      if (counter > 50) {
+        break;  //same guard as the console loop - see below
+      }
+      counter++;
       int data = serialAmp->read();
 
       _On_Serial_Amplifier_Message(mqttClient, static_cast<SERIAL_HEADER>(data));
@@ -239,9 +244,21 @@ void Z906::_Serial_Send_To_Amplifier(const uint8_t* buffer, const size_t size) {
 }
 
 uint8_t Z906::_Serial_Amplifier_ReadByte_With_Wait() {
-  //This Method blocks the Process until bytes are available
+  //This Method blocks the Process until bytes are available, up to a timeout.
+  //
+  //Without a timeout this never returns if the expected continuation bytes do
+  //not arrive - which happens whenever a noisy or intermittent line frames a
+  //stray byte as a multibyte header. The whole sketch then stops: WiFi keeps
+  //answering pings because it runs on the other core, while MQTT goes silent
+  //permanently and the console loses the relay.
+  //
+  //500ms is roughly 60x the wire time of one byte at 57600 8O1.
+  unsigned long deadline = millis() + SERIAL_READ_TIMEOUT;
   while (serialAmp->available() == 0) {
-    delay(50);  //wait
+    if (millis() > deadline) {
+      return 0;
+    }
+    delay(5);
   }
   return serialAmp->read();
 }
