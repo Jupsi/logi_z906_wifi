@@ -117,6 +117,14 @@ void Z906::Update(MQTT* mqttClient) {
   } else {
     if (_is_connected == false) {
       _is_connected = true;
+      //Ask the amplifier for its configuration now the link is usable.
+      //
+      //The only other call is in the constructor, which runs at boot while the
+      //console is typically not yet present - so that request goes unanswered
+      //and nothing ever asks again. Without this a perfectly working link can
+      //sit there having never published a single state to the broker, which
+      //looks indistinguishable from a wiring fault.
+      _Serial_Request_Config();
     }
     _Serial_Process_Console();
     _Serial_Process_Amplifier(mqttClient);
