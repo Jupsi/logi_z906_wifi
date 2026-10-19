@@ -70,8 +70,11 @@ void MQTT::Connect() {
     Serial.println(port);
     Serial.print("Auth with User: ");
     Serial.println(user);
-    Serial.print("Password: ");
-    Serial.println(password);
+    //Length only - printing the broker password in clear text puts it in
+    //every serial capture, and this runs on every connection attempt.
+    Serial.print("Password: [");
+    Serial.print(password.length());
+    Serial.println(" chars]");
     Serial.print("Client ID: ");
     Serial.println(client_id);
 
